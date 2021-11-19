@@ -1,0 +1,26 @@
+{
+  "name": "code-snippet-api",
+  "version": "1.0.0",
+  "description": "An API to provide snippet of code",
+  "author": "Lissens Loïc <loiclissens@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js",
+    "dev": "nodemon main.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebase-admin": "10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.3",
+    "pg": "^8.6.0",
+    "sharp": "^0.29.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
