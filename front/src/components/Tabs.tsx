@@ -10,7 +10,7 @@ interface Props {
 
 function Tabs(props: Props) {
   return (
-    <Tab.Group onChange={(e) => console.log(e)}>
+    <Tab.Group onChange={(e:number) => props.changeTab(e)}>
       <Tab.List className="mb-4">
         {props.tabList.map((tab) => {
           return (
