@@ -1,6 +1,6 @@
 const express = require("express");
 const { db } = require("./db/init");
-const { createUsersTable, createAdmin, createCategories } = require("./db/setUpDb");
+const { createUsersTable, createAdmin, createCategoriesTable, createSnippesTable } = require("./db/setUpDb");
 const { comparePass } = require("./helpers/hashPassword");
 const { sharpImage } = require("./helpers/sharpImage");
 require("dotenv").config();
@@ -8,14 +8,16 @@ const jwt = require("jsonwebtoken");
 const firebaseBucket = require("./firebase/init").bucket;
 const multer = require("multer");
 const fs = require("fs");
-const cors = require("cors")
+const cors = require("cors");
+const { json } = require("express");
 
 
 const INITDB = false;
 
 if (INITDB) {
-  createCategories();
+  createCategoriesTable();
   createUsersTable();
+  createSnippesTable();
 }
 
 const storage = multer.memoryStorage();
@@ -51,6 +53,7 @@ const generateAccessToken = (user) => {
 app.get("/api/snippets", authentificateToken, (req, resp) => {
   resp.send("ola");
 });
+
 app.get("/api/categories", async (req, resp) => {
   try {
     await db
@@ -65,6 +68,18 @@ app.get("/api/categories", async (req, resp) => {
     resp.json({Error:'Unable to find any categories'})
   }
 });
+
+app.post("/api/categorie", (req, resp) => {
+  const { name, bgColor, textColor } = req.body;
+  db.query(`INSERT INTO categories (name, bg_color, text_color)  VALUES ($1, $2, $3)`, [name, bgColor, textColor])
+    .then((r) => {
+      console.log(`Categorie ${name} was added to the DB !`);
+     resp.json({name, bgColor, textColor})
+    }).catch((e) => {
+    resp.json({error:e.detail})
+  })
+
+})
 
 app.post("/api/login", (req, resp) => {
   const { user, password } = req.body;

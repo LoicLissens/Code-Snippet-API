@@ -28,13 +28,13 @@ const createUsersTable = async () => {
   }
 };
 
-const createCategories = async () => {
+const createCategoriesTable = async () => {
 await db.query(`DROP TABLE IF EXISTS categories CASCADE`);
   try {
     await db.query(
      `Create TABLE categories(
     ID SERIAL PRIMARY KEY,
-    name VARCHAR(50), bg_color VARCHAR(50),
+    name VARCHAR(50) UNIQUE, bg_color VARCHAR(50),
     text_color VARCHAR(240))`
     )
       console.log("Table categories created !");
@@ -45,7 +45,28 @@ await db.query(`DROP TABLE IF EXISTS categories CASCADE`);
   }
 };
 
+const createSnippesTable = async () => {
+  await db.query(`DROP TABLE IF EXISTS snippets CASCADE`)
+  try {
+    await db.query(`Create TABLE snippets(
+        ID SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(50) UNIQUE NOT NULL,
+    description VARCHAR(250)NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    firebase_path VARCHAR(250) NOT NULL,
+    code VARCHAR(250),
+    backup_path VARCHAR(250)
+    )`)
+    console.log("Table Snippets created !");
+    
+  } catch (e) {
+    console.log(err);
+  }
+}
+
+
 module.exports = {
   createUsersTable,
-  createCategories,
+  createCategoriesTable,
+  createSnippesTable
 };
