@@ -71,6 +71,7 @@ app.get("/api/categories", async (req, resp) => {
 
 app.post("/api/categorie", (req, resp) => {
   const { name, bgColor, textColor } = req.body;
+
   db.query(`INSERT INTO categories (name, bg_color, text_color)  VALUES ($1, $2, $3)`, [name, bgColor, textColor])
     .then((r) => {
       console.log(`Categorie ${name} was added to the DB !`);

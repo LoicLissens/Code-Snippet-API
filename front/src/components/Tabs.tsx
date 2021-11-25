@@ -14,7 +14,7 @@ function Tabs(props: Props) {
       <Tab.List className="mb-4">
         {props.tabList.map((tab) => {
           return (
-            <Tab key={tab} className={props.selectedTab === tab ? "border-2 border-black p-2" : "" + " mx-2"}>
+            <Tab key={tab} className={props.selectedTab === tab ? "border-b-2 border-black p-2" : "" + " mx-2"}>
               {tab}
             </Tab>
           );

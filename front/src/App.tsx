@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
     useSelectedTab(tabList[newIndexTab]);
   };
   return (
-    <div className="h-screen w-full flex flex-col justify-center items-center bg-gray-400">
+    <div className="h-screen w-full flex flex-col justify-center items-center bg-gray-400 overflow-auto">
       <Tabs tabList={tabList} selectedTab={selectedTab} changeTab={changeTab}>
         {selectedTab === tabsName.createCat && <CreateCatgories />}
         {selectedTab === tabsName.uploadSnipp && <UploadSnippetForm />}
