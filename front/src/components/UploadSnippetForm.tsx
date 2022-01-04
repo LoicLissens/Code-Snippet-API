@@ -10,8 +10,8 @@ const UploadSnippetForm: React.FC = (): JSX.Element => {
     
   }
   return (
-    <div className="">
-      <form onSubmit={(e)=> e.preventDefault()}>
+    <div >
+      <form className="shadow-lg rounded-md p-4" onSubmit={(e)=> e.preventDefault()}>
         <div className="">
           <label />
           <input type="text" name="" id="" placeholder="Name" className="rounded-lg shadow-md" />

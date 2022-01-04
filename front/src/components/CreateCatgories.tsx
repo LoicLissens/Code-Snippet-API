@@ -18,7 +18,7 @@ const CreateCatgories = (): JSX.Element => {
 
   return (
     <div>
-      <form className="p-4 border-2 border-black rounded-md">
+      <form className="p-4 shadow-lg rounded-md">
         <div>
           <label />
           <input onInput={handleChange} className="rounded-lg shadow-md" type="text" name="name" id="" placeholder="categorie" />

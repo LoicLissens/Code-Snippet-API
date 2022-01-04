@@ -1,6 +1,6 @@
 const express = require("express");
 const { db } = require("./db/init");
-const { createUsersTable, createAdmin, createCategoriesTable, createSnippesTable } = require("./db/setUpDb");
+const { INIT_DB, POPULATE_DB } = require("./db/setUpDb");
 const { comparePass } = require("./helpers/hashPassword");
 const { sharpImage } = require("./helpers/sharpImage");
 require("dotenv").config();
@@ -10,14 +10,15 @@ const multer = require("multer");
 const fs = require("fs");
 const cors = require("cors");
 const { json } = require("express");
+const chalk = require("chalk")
 
-
+//init and populate DB
 const INITDB = false;
-
 if (INITDB) {
-  createCategoriesTable();
-  createUsersTable();
-  createSnippesTable();
+  ( async() => {
+    await INIT_DB()
+    await POPULATE_DB()
+ })()
 }
 
 const storage = multer.memoryStorage();
@@ -115,7 +116,7 @@ app.post("/image", upload.single("snippetImg"), (req, resp) => {
 });
 
 app.listen(PORT);
-console.log(`Running on ${PORT}`);
+console.log(chalk.blue(`Running on ${PORT}`));
 
 // firebaseBucket.file('/Capture decran 2021-07-13 a 01.20.58.png').download({
 //   destination:'./images/lol.png'

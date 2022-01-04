@@ -1,2 +1,1 @@
-# cd front && npm run dev
-ls
+cd front && npm run dev
