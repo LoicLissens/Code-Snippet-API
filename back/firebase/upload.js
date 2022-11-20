@@ -1,9 +1,9 @@
-const init = require("./init.js");
+const init = require('./init.js')
 const upload = (fileToUpload) => {
-    init.bucket.upload(fileToUpload).then((resp) => {
-        console.log(resp);
-    })
+  init.bucket.upload(fileToUpload).then((resp) => {
+    console.log(resp)
+  })
 }
 module.exports = {
-    upload
+  upload
 }

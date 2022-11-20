@@ -1,10 +1,8 @@
-const { initializeApp, cert } = require('firebase-admin/app');
-const { getStorage } = require('firebase-admin/storage');
-const serviceAccount = require('../serviceAccountKey.json')
-initializeApp({
-  credential: cert(serviceAccount),
-  storageBucket:'code-snippet-96716.appspot.com'
-});
-const bucket = getStorage().bucket()
-
-exports.bucket = bucket
+// import { initializeApp, cert } from 'firebase-admin/app'
+// import  {getStorage}  from 'firebase-admin/storage'
+// import  serviceAccount from '../serviceAccountKey.json'
+// initializeApp({
+//   credential: cert(serviceAccount),
+//   storageBucket: 'code-snippet-96716.appspot.com'
+// })
+// export const bucket = getStorage().bucket()

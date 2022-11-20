@@ -1,0 +1,1 @@
+docker stop code-snippet-db && docker rm code-snippet-db && docker run -d --name code-snippet-db -p 127.0.0.1:5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=code_snippet postgres
